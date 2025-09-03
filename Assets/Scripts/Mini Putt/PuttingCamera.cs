@@ -24,6 +24,7 @@ public class PuttingCamera : MonoBehaviour
         // set up pivot
         pivot = new GameObject("Camera Pivot").transform;
         pivot.position = ball.transform.position;
+        pivot.rotation = ball.transform.rotation;
         transform.SetParent(pivot);
 
         arrow = Instantiate(arrowPrefab);
