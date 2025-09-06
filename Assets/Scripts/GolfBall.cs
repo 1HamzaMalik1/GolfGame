@@ -7,7 +7,7 @@ public class GolfBall : MonoBehaviour
     private new Rigidbody rigidbody;
 
     [Header("Shot")]
-    public float force = 20;
+    public float force = 0;
     [Range(-1, 1), Tooltip("-1 backspin,+1 topspin")]
     public float backspin;
     [Range(-1, 1), Tooltip("-1 left, +1 right")]
