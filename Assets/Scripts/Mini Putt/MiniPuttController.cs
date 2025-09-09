@@ -15,7 +15,6 @@ public class MiniPuttController : Singleton<MiniPuttController>
     [Header("UI Controls")]
     [SerializeField] private PowerUpButton powerButton = null;
     [SerializeField] private Button resetSceneButton = null;
-    [SerializeField] private Scorecard scorecard = null;
 
     private GolfBall ball;
 
@@ -27,8 +26,8 @@ public class MiniPuttController : Singleton<MiniPuttController>
         powerButton.onHit = HitBall;
         resetSceneButton.onClick.AddListener(ResetBallPosition);
 
-        scorecard.gameObject.SetActive(false);
-        scorecard.onContinuePressed.AddListener(() => StartCoroutine(GoToNextHole()));
+        UIManager.Instance.levelCompletePanel.SetActive(false);
+        //scorecard.onContinuePressed.AddListener(() => StartCoroutine(GoToNextHole()));
     }
 
     public void SetHoleInfo(int holeNumber, int par, GolfBall ball, Cup cup)
@@ -53,12 +52,12 @@ public class MiniPuttController : Singleton<MiniPuttController>
     private void ShowScoreCard()
     {
         // hide HUD
-        powerButton.gameObject.SetActive(false);
+        //powerButton.gameObject.SetActive(false);
         resetSceneButton.gameObject.SetActive(false);
 
         // set score
-        scorecard.gameObject.SetActive(true);
-        scorecard.SetScorecard(holeData);
+        UIManager.Instance.levelCompletePanel.SetActive(true);
+        //scorecard.SetScorecard(holeData);
 
         if (Timer.Instance != null)
             Timer.Instance.isStoped = true;
@@ -70,7 +69,7 @@ public class MiniPuttController : Singleton<MiniPuttController>
     {
         Debug.Log("Go to next hole");
 
-        scorecard.gameObject.SetActive(false);
+       // scorecard.gameObject.SetActive(false);
 
         yield return SceneManager.LoadSceneAsync($"mini_hole_{currentHole + 1}");
 

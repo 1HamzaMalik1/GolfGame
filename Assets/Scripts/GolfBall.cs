@@ -94,9 +94,19 @@ public class GolfBall : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Enemy enemy = other.gameObject.GetComponent<Enemy>();
-            enemy.SetRagdollState(true);
-            enemy.addForceOnEnemy();
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.SetRagdollState(true);
+
+                // Example: hit direction = from ball to enemy
+                Vector3 hitDirection = other.transform.position - transform.position;
+
+                // Example: impact point = enemy position
+                Vector3 hitPoint = other.ClosestPoint(transform.position);
+
+                enemy.AddForceOnEnemy(hitPoint, hitDirection);
+            }
         }
     }
 }

@@ -22,6 +22,9 @@ public class OutOfBounds : MonoBehaviour
 
 		Debug.Log("Out of bounds!");
 		col.GetComponent<Rigidbody>().velocity = Vector3.zero;
-		col.transform.position = reSpawnPosition;
+		UIManager.Instance.gameOverPanel.SetActive(true);
+		//col.transform.position = reSpawnPosition;
 	}
+
+	
 }
