@@ -61,7 +61,7 @@ public class AimCam : MonoBehaviour
     {
         var x = Input.GetAxis("Horizontal");
         var y = Input.GetAxis("Vertical");
-        pivot.transform.Translate(Time.deltaTime * moveSpeed * new Vector3(x, 0, y), transform);
+        pivot.transform.Translate(Time.fixedDeltaTime * moveSpeed * new Vector3(x, 0, y), transform);
         var pos = pivot.position;
         pos.y = 0;
         pivot.position = pos;

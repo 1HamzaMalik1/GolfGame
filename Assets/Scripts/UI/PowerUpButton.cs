@@ -25,7 +25,7 @@ public class PowerUpButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 	{
 		if (isPointerDown)
 		{
-			t += Time.deltaTime;
+			t += Time.fixedDeltaTime;
 			power = Mathf.Lerp(0, maxPower, Mathf.PingPong(t, 1));
 
 			powerText.text = power.ToString("0");

@@ -32,7 +32,7 @@ public class Timer : MonoBehaviour
             {
                 if (isStoped == false)
                 {
-                    timeRemaining -= Time.deltaTime;
+                    timeRemaining -= Time.fixedDeltaTime;
                 }
 
                 if (timeRemaining > 0)
